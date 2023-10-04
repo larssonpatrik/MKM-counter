@@ -16,7 +16,7 @@ export default function Counter({ name, count, changeCount }: CounterProps) {
     <ScComponentContainer>
       <ScCounterContainer>
         <ScArrowCointainer onClick={() => changeCount(count + 1)}>
-          <BsArrowUp size={48} />
+          <BsArrowUp size={48} color="white" />
         </ScArrowCointainer>
 
         <ScCountContainer>
@@ -24,7 +24,7 @@ export default function Counter({ name, count, changeCount }: CounterProps) {
         </ScCountContainer>
 
         <ScArrowCointainer onClick={() => countDown()}>
-          <BsArrowDown size={48} />
+          <BsArrowDown size={48} color="white" />
         </ScArrowCointainer>
       </ScCounterContainer>
 
@@ -63,6 +63,7 @@ const ScCountContainer = styled.div`
 const ScCountText = styled.p`
   font-size: 42px;
   font-weight: 700;
+  color: white;
 `;
 
 const ScNameContainer = styled.div`
@@ -71,4 +72,5 @@ const ScNameContainer = styled.div`
 
 const ScNameText = styled.p`
   font-size: 13px;
+  color: white;
 `;

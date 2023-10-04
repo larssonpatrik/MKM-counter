@@ -4,50 +4,43 @@ import styled from "styled-components";
 interface BarGraphProps {
   size1: number;
   size2: number;
+  label1: string;
+  label2: string;
 }
 
-export default function BarGraph({ size1, size2 }: BarGraphProps) {
+export default function BarGraph({
+  size1,
+  size2,
+  label1,
+  label2,
+}: BarGraphProps) {
   return (
     <div>
       <ScBarGraphContainer>
-        <ScBarGraphItem color="red" size={size1}>
-          {size1 > 0 && ((size1 / (size1 + size2)) * 100).toFixed(1) + "%"}
+        <ScBarGraphItem color="#edc916" size={size1}>
+          <ScBarGraphText>
+            {size1 > 0 && ((size1 / (size1 + size2)) * 100).toFixed(1) + "%"}
+          </ScBarGraphText>
         </ScBarGraphItem>
-        <ScBarGraphItem color="green" size={size2}>
-          {size2 > 0 && ((size2 / (size1 + size2)) * 100).toFixed(1) + "%"}
+
+        <ScBarGraphItem color="#c5c5c4" size={size2}>
+          <ScBarGraphText>
+            {size2 > 0 && ((size2 / (size1 + size2)) * 100).toFixed(1) + "%"}
+          </ScBarGraphText>
         </ScBarGraphItem>
       </ScBarGraphContainer>
-      <div
-        style={{
-          padding: "16px 0",
-          display: "flex",
-          justifyContent: "center",
-          gap: 16,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div
-            style={{
-              height: 12,
-              width: 12,
-              backgroundColor: "red",
-              marginRight: 8,
-            }}
-          ></div>
-          <p>Media / Dataloger</p>
-        </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div
-            style={{
-              height: 12,
-              width: 12,
-              backgroundColor: "green",
-              marginRight: 8,
-            }}
-          ></div>
-          <p>Plusettor</p>
-        </div>
-      </div>
+
+      <ScBarGraphTextContainer>
+        <ScBarGraphTextItem>
+          <ScBarGraphLabelSquare color="#edc916" />
+          <ScBarGraphLabel>{label1}</ScBarGraphLabel>
+        </ScBarGraphTextItem>
+
+        <ScBarGraphTextItem>
+          <ScBarGraphLabelSquare color="#c5c5c4" />
+          <ScBarGraphLabel>{label2}</ScBarGraphLabel>
+        </ScBarGraphTextItem>
+      </ScBarGraphTextContainer>
     </div>
   );
 }
@@ -55,7 +48,7 @@ export default function BarGraph({ size1, size2 }: BarGraphProps) {
 const ScBarGraphContainer = styled.div`
   height: 40px;
   width: 100%;
-  background-color: gray;
+  background-color: #323232;
   display: flex;
 `;
 
@@ -66,4 +59,31 @@ const ScBarGraphItem = styled.div<{ color: string; size: number }>`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const ScBarGraphTextContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 0;
+`;
+
+const ScBarGraphTextItem = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ScBarGraphLabelSquare = styled.div<{ color: string }>`
+  height: 12px;
+  width: 12px;
+  background-color: ${(props) => props.color};
+  margin-right: 8px;
+`;
+
+const ScBarGraphLabel = styled.p`
+  color: white;
+`;
+
+const ScBarGraphText = styled.p`
+  font-weight: 700;
 `;

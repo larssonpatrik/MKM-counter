@@ -7,7 +7,8 @@ export function TotalText({ children }: PropsWithChildren) {
 
 const ScTotalText = styled.div`
   text-align: center;
-  font-size: 100px;
+  font-size: 184px;
   font-weight: 700;
-  line-height: 80px;
+  line-height: 100px;
+  color: white;
 `;
