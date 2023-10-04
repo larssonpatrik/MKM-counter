@@ -8,7 +8,7 @@ interface BarGraphProps {
 
 export default function BarGraph({ size1, size2 }: BarGraphProps) {
   return (
-    <div style={{}}>
+    <div>
       <ScBarGraphContainer>
         <ScBarGraphItem color="red" size={size1}>
           {size1 > 0 && ((size1 / (size1 + size2)) * 100).toFixed(1) + "%"}
@@ -53,7 +53,7 @@ export default function BarGraph({ size1, size2 }: BarGraphProps) {
 }
 
 const ScBarGraphContainer = styled.div`
-  height: 80px;
+  height: 40px;
   width: 100%;
   background-color: gray;
   display: flex;
