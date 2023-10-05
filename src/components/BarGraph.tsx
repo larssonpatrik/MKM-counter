@@ -17,13 +17,21 @@ export default function BarGraph({
   return (
     <div>
       <ScBarGraphContainer>
-        <ScBarGraphItem color="#edc916" size={size1}>
+        <ScBarGraphItem
+          color="#edc916"
+          size={size1}
+          style={{ borderRadius: "8px 0 0 8px" }}
+        >
           <ScBarGraphText>
             {size1 > 0 && ((size1 / (size1 + size2)) * 100).toFixed(1) + "%"}
           </ScBarGraphText>
         </ScBarGraphItem>
 
-        <ScBarGraphItem color="#c5c5c4" size={size2}>
+        <ScBarGraphItem
+          color="#c5c5c4"
+          size={size2}
+          style={{ borderRadius: "0 8px 8px 0" }}
+        >
           <ScBarGraphText>
             {size2 > 0 && ((size2 / (size1 + size2)) * 100).toFixed(1) + "%"}
           </ScBarGraphText>
@@ -50,6 +58,7 @@ const ScBarGraphContainer = styled.div`
   width: 100%;
   background-color: #323232;
   display: flex;
+  border-radius: 8px;
 `;
 
 const ScBarGraphItem = styled.div<{ color: string; size: number }>`
