@@ -9,6 +9,6 @@ const analytics = getAnalytics(app);
 
 const postListRef = ref(db, "count");
 
-export function addDataTEST(info) {
+export function changeCountDB(info) {
   set(postListRef, info);
 }

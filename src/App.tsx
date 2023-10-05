@@ -6,20 +6,22 @@ import { TotalText } from "./components/Typography";
 import Spacer from "./components/Spacer";
 import Logo from "./components/Logo";
 import Button from "./components/Button";
-import { addDataTEST } from "./firebaseModel";
+import { changeCountDB } from "./firebaseModel";
 
 function App() {
   const [countMEDA, setCountMEDA] = useState(0);
   const [countPlusOnes, setCountPlusOnes] = useState(0);
 
   function changeCountMEDA(count: number) {
-    addDataTEST(count + countPlusOnes);
+    changeCountDB(count + countPlusOnes);
     setCountMEDA(count);
   }
   function changeCountPlusOnes(count: number) {
-    addDataTEST(count + countMEDA);
+    changeCountDB(count + countMEDA);
     setCountPlusOnes(count);
   }
+
+  function checkDistribution() {}
 
   return (
     <div className="App">
@@ -30,7 +32,21 @@ function App() {
       <Spacer size={1} />
       <Spacer size={5} />
       <TotalText>{countMEDA + countPlusOnes}</TotalText>
-      <Spacer size={5} />
+      <Spacer size={3} />
+
+      <p
+        style={{
+          color: countMEDA < countPlusOnes ? "#D10F0F" : "black",
+          fontWeight: 500,
+          textAlign: "center",
+        }}
+      >
+        {countMEDA <= countPlusOnes
+          ? "Helvete, 50/50 regeln överskriden!"
+          : "Superhemligt meddelande"}
+      </p>
+
+      <Spacer size={2} />
       <BarGraph
         size1={countMEDA}
         size2={countPlusOnes}
@@ -58,7 +74,7 @@ function App() {
           action={() => {
             setCountMEDA(0);
             setCountPlusOnes(0);
-            addDataTEST(0);
+            changeCountDB(0);
           }}
         />
       </div>
