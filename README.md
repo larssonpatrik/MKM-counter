@@ -1,5 +1,5 @@
 # MKM Counter
-This web application allow for the hard-working people at MKM to efficiently monitor how many people that are in META at a given moment. In addition to being able to keep track of Media / CS students and "Plus ones" at the same time, the visualization helps MKM to make quick decisions about who they can allow to enter with regards to the 50/50 rule.
+This web application allow for the hard-working people at MKM to efficiently monitor how many people that are in META at a given moment. In addition to being able to keep track of Media / CS students and "Plus ones" at the same time, the visualization helps MKM to make quick decisions if they can allow more "Plus ones" to enter with regards to the 50/50 rule.
 ![MKM_counter](https://github.com/larssonpatrik/MKM-counter/assets/37025716/7cabaf66-0a82-4b70-90ad-0279522b8305) 
 
 # Getting Started with Create React App
