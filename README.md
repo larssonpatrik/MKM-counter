@@ -1,3 +1,5 @@
+![MKM_counter](https://github.com/larssonpatrik/MKM-counter/assets/37025716/7cabaf66-0a82-4b70-90ad-0279522b8305) 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
