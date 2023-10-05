@@ -7,8 +7,10 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const analytics = getAnalytics(app);
 
-const postListRef = ref(db, "count");
+const postListRef = ref(db, "countData");
 
-export function changeCountDB(info) {
-  set(postListRef, info);
+export function changeCountDB(count) {
+  const tmp = new Date();
+  const time = tmp.getHours() + ":" + tmp.getMinutes();
+  set(postListRef, { count: count, time: time });
 }
