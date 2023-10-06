@@ -9,8 +9,13 @@ const analytics = getAnalytics(app);
 
 const postListRef = ref(db, "countData");
 
-export function changeCountDB(count) {
+export function changeCountDB(count1, count2) {
   const tmp = new Date();
   const time = tmp.getHours() + ":" + tmp.getMinutes();
-  set(postListRef, { count: count, time: time });
+  set(postListRef, {
+    total: count1 + count2,
+    MEDA: count1,
+    plusOnes: count2,
+    time: time,
+  });
 }

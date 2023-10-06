@@ -13,15 +13,13 @@ function App() {
   const [countPlusOnes, setCountPlusOnes] = useState(0);
 
   function changeCountMEDA(count: number) {
-    changeCountDB(count + countPlusOnes);
+    changeCountDB(count, countPlusOnes);
     setCountMEDA(count);
   }
   function changeCountPlusOnes(count: number) {
-    changeCountDB(count + countMEDA);
+    changeCountDB(countMEDA, count);
     setCountPlusOnes(count);
   }
-
-  function checkDistribution() {}
 
   return (
     <div className="App">
