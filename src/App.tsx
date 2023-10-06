@@ -7,6 +7,7 @@ import Spacer from "./components/Spacer";
 import Logo from "./components/Logo";
 import Button from "./components/Button";
 import { changeCountDB } from "./firebaseModel";
+import styled from "styled-components";
 
 function App() {
   const [countMEDA, setCountMEDA] = useState(0);
@@ -52,7 +53,7 @@ function App() {
         label2="Plusettor"
       />
       <Spacer size={2} />
-      <div style={{ display: "flex", flex: "auto", gap: 8 }}>
+      <ScCountersWrap>
         <Counter
           name="Media / Data"
           count={countMEDA}
@@ -63,7 +64,7 @@ function App() {
           count={countPlusOnes}
           changeCount={changeCountPlusOnes}
         />
-      </div>
+      </ScCountersWrap>
       <Spacer size={1} />
       <Spacer size={3} />
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -72,12 +73,31 @@ function App() {
           action={() => {
             setCountMEDA(0);
             setCountPlusOnes(0);
-            changeCountDB(0);
+            changeCountDB(0, 0);
           }}
         />
       </div>
+      <Spacer size={2} />
+      <p style={{ color: "#3D3D3D", textAlign: "center" }}>
+        Developed by Paddan 2023
+      </p>
     </div>
   );
 }
+
+const ScCountersWrap = styled.div`
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+    display: flex;
+    flex: auto;
+    gap: 100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex: auto;
+    gap: 8px;
+  }
+`;
 
 export default App;

@@ -15,7 +15,13 @@ export default function BarGraph({
   label2,
 }: BarGraphProps) {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <ScBarGraphContainer>
         <ScBarGraphItem
           color="#edc916"
@@ -54,6 +60,9 @@ export default function BarGraph({
 }
 
 const ScBarGraphContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 40vw;
+  }
   height: 40px;
   width: 100%;
   background-color: #323232;

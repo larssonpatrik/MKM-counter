@@ -36,9 +36,17 @@ export default function Counter({ name, count, changeCount }: CounterProps) {
 }
 
 const ScComponentContainer = styled.div`
-  flex: auto;
-  display: flex;
-  flex-direction: column;
+  @media screen and (max-width: 768px) {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const ScCounterContainer = styled.div`
