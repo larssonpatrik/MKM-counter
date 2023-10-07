@@ -1,5 +1,7 @@
 # MKM Counter
 This web application allow for the hard-working people at MKM to efficiently monitor how many people that are in META at a given moment. In addition to being able to keep track of Media / CS students and "Plus ones" at the same time, the visualization helps MKM to make quick decisions if they can allow more "Plus ones" to enter with regards to the 50/50 rule.
+
+The web application is connected to a Firebase Real-Time Database that enables multiple users to see the same data. In practice this means that MKM effortlessly can switch who sits at the door without having to set up an additional counter.  
 ![PhonePreview2](https://github.com/larssonpatrik/MKM-counter/assets/37025716/491fe555-97e5-40d6-b77c-ac2fd31be5f8)
 
 # Getting Started with Create React App
