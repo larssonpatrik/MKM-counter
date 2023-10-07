@@ -1,11 +1,12 @@
 import { firebaseConfig } from "./firebaseConfig";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, push, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
 const postListRef = ref(db, "countData");
 
@@ -35,4 +36,17 @@ export function getCurrentCountDataDB(
       setCountState2(data.plusOnes);
     }
   });
+}
+
+export function signInWithEmail(email: string, password: string) {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
 }
