@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import BarGraph from "./components/BarGraph";
 import Counter from "./components/Counter";
@@ -6,12 +6,12 @@ import { TotalText } from "./components/Typography";
 import Spacer from "./components/Spacer";
 import Logo from "./components/Logo";
 import Button from "./components/Button";
-import { changeCountDB } from "./firebaseModel";
+import { changeCountDB, getCurrentCountDataDB } from "./firebaseModel";
 import styled from "styled-components";
 
 function App() {
-  const [countMEDA, setCountMEDA] = useState(0);
-  const [countPlusOnes, setCountPlusOnes] = useState(0);
+  const [countMEDA, setCountMEDA] = useState<number>(0);
+  const [countPlusOnes, setCountPlusOnes] = useState<number>(0);
 
   function changeCountMEDA(count: number) {
     changeCountDB(count, countPlusOnes);
@@ -21,6 +21,10 @@ function App() {
     changeCountDB(countMEDA, count);
     setCountPlusOnes(count);
   }
+
+  useEffect(() => {
+    return getCurrentCountDataDB(setCountMEDA, setCountPlusOnes);
+  }, []);
 
   return (
     <div className="App">
