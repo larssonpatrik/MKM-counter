@@ -1,0 +1,17 @@
+.test {
+  animation-name: color;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes color {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: red;
+  }
+}

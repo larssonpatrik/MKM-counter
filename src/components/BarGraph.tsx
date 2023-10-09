@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import "./BarGraph.css";
 
 interface BarGraphProps {
   size1: number;
@@ -27,6 +28,7 @@ export default function BarGraph({
           color="#edc916"
           size={size1}
           style={{ borderRadius: "8px 0 0 8px" }}
+          className="test"
         >
           <ScBarGraphText>
             {size1 > 0 && ((size1 / (size1 + size2)) * 100).toFixed(1) + "%"}
