@@ -135,7 +135,7 @@ function App() {
               type="password"
             />
 
-            <Spacer size={2} />
+            <Spacer size={3} />
             <LoginStatus status={authStatus} />
             <Spacer size={2} />
 
