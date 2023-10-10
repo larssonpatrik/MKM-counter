@@ -1,17 +1,17 @@
-.test {
+.pulse {
   animation-name: color;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
 }
 
 @keyframes color {
   0% {
-    background-color: red;
+    background-color: hsl(0, 91%, 51%);
   }
   50% {
-    background-color: yellow;
+    background-color: hsl(0, 93%, 40%);
   }
   100% {
-    background-color: red;
+    background-color: hsl(0, 91%, 51%);
   }
 }

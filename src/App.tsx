@@ -108,7 +108,15 @@ function App() {
           <Spacer size={2} />
           <Spacer size={1} />
           <p style={{ color: "#3D3D3D", textAlign: "center" }}>
-            Developed by Paddan 2023
+            Developed by{" "}
+            <a
+              href="https://github.com/larssonpatrik"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#5e5e5e" }}
+            >
+              Paddan 2023
+            </a>
           </p>
         </>
       ) : (
@@ -155,7 +163,15 @@ function App() {
           </div>
           <Spacer size={3} />
           <p style={{ color: "#3D3D3D", textAlign: "center" }}>
-            Developed by Paddan 2023
+            Developed by{" "}
+            <a
+              href="https://github.com/larssonpatrik"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#5e5e5e" }}
+            >
+              Paddan 2023
+            </a>
           </p>
         </>
       )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import "./BarGraph.css";
 
@@ -15,6 +15,22 @@ export default function BarGraph({
   label1,
   label2,
 }: BarGraphProps) {
+  let value;
+  let className = "";
+  const percentageMEDA = (size1 / (size1 + size2)) * 100;
+  const percentagePlusOnes = (size2 / (size1 + size2)) * 100;
+  const delta40 = percentagePlusOnes - 40;
+
+  if (10 >= delta40 && delta40 > 0) {
+    value = 50 - delta40 * 5;
+  } else if (delta40 > 10) {
+    value = 0;
+    className = "pulse";
+  } else if (delta40 <= 0) {
+    value = 50;
+  }
+
+  console.log("VALUE:", value);
   return (
     <div
       style={{
@@ -24,26 +40,25 @@ export default function BarGraph({
       }}
     >
       <ScBarGraphContainer>
-        <ScBarGraphItem
-          color="#edc916"
+        <ScBarGraphItemMeda
+          value={value}
           size={size1}
           style={{ borderRadius: "8px 0 0 8px" }}
-          className="test"
+          className={className}
         >
           <ScBarGraphText>
-            {size1 > 0 && ((size1 / (size1 + size2)) * 100).toFixed(1) + "%"}
+            {size1 > 0 && percentageMEDA.toFixed(1) + "%"}
           </ScBarGraphText>
-        </ScBarGraphItem>
+        </ScBarGraphItemMeda>
 
-        <ScBarGraphItem
-          color="#c5c5c4"
+        <ScBarGraphItemPlusOnes
           size={size2}
           style={{ borderRadius: "0 8px 8px 0" }}
         >
           <ScBarGraphText>
-            {size2 > 0 && ((size2 / (size1 + size2)) * 100).toFixed(1) + "%"}
+            {size2 > 0 && percentagePlusOnes.toFixed(1) + "%"}
           </ScBarGraphText>
-        </ScBarGraphItem>
+        </ScBarGraphItemPlusOnes>
       </ScBarGraphContainer>
 
       <ScBarGraphTextContainer>
@@ -72,9 +87,22 @@ const ScBarGraphContainer = styled.div`
   border-radius: 8px;
 `;
 
-const ScBarGraphItem = styled.div<{ color: string; size: number }>`
+const ScBarGraphItemPlusOnes = styled.div<{ size: number }>`
   flex: ${(props) => props.size} 1;
-  background-color: ${(props) => props.color};
+  background-color: #c5c5c4;
+  transition: 250ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ScBarGraphItemMeda = styled.div<{
+  size: number;
+  value: number | undefined;
+}>`
+  background-color: ${(props) => "hsl(" + props.value + ", 91%, 51%)"};
+
+  flex: ${(props) => props.size} 1;
   transition: 250ms;
   display: flex;
   align-items: center;
