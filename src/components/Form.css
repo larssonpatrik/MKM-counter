@@ -1,3 +1,11 @@
 .form::placeholder {
   color: #696969;
 }
+
+.form:hover {
+  border: 2px solid #696969;
+}
+
+.form:focus {
+  border: 2px solid #696969;
+}

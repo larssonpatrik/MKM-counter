@@ -39,4 +39,5 @@ const ScFormInput = styled.input`
   border-radius: 8px;
   color: white;
   caret-color: white;
+  border: 2px solid black;
 `;

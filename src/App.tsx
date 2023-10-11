@@ -61,14 +61,21 @@ function App() {
 
           <p
             style={{
-              color: countMEDA < countPlusOnes ? "#D10F0F" : "black",
+              color:
+                countMEDA < countPlusOnes
+                  ? "#D10F0F"
+                  : countMEDA / (countMEDA + countPlusOnes) === 1
+                  ? "white"
+                  : "black",
               fontWeight: 500,
               textAlign: "center",
             }}
           >
-            {countMEDA <= countPlusOnes
+            {countMEDA < countPlusOnes
               ? "Helvete, 50/50 regeln överskriden!"
-              : "Superhemligt meddelande"}
+              : countMEDA / (countMEDA + countPlusOnes) === 1
+              ? "Fan vad skönt, bara medianer!"
+              : "superhemligt meddelande"}
           </p>
 
           <Spacer size={2} />
@@ -120,60 +127,62 @@ function App() {
           </p>
         </>
       ) : (
-        <>
-          <Spacer size={4} />
-          <Heading size={1}>Sign in</Heading>
-          <Spacer size={2} />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <Form
-              label="Username"
-              stateHandler={[username, setUsername]}
-              type="username"
-            />
+        <ScLogInContainer>
+          <ScLogInWrap>
+            <Spacer size={4} />
+            <Heading size={1}>Sign in</Heading>
             <Spacer size={2} />
-            <Form
-              label="Password"
-              stateHandler={[password, setPassword]}
-              type="password"
-            />
-
-            <Spacer size={3} />
-            <LoginStatus status={authStatus} />
-            <Spacer size={2} />
-
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <LogInButton
-                action={() =>
-                  signInWithEmail(
-                    username + "@mail.com",
-                    password,
-                    setAuthStatus
-                  )
-                }
-              >
-                Sign in
-              </LogInButton>
-            </div>
-          </div>
-          <Spacer size={3} />
-          <p style={{ color: "#3D3D3D", textAlign: "center" }}>
-            Developed by{" "}
-            <a
-              href="https://github.com/larssonpatrik"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "#5e5e5e" }}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
             >
-              Paddan 2023
-            </a>
-          </p>
-        </>
+              <Form
+                label="Username"
+                stateHandler={[username, setUsername]}
+                type="username"
+              />
+              <Spacer size={2} />
+              <Form
+                label="Password"
+                stateHandler={[password, setPassword]}
+                type="password"
+              />
+
+              <Spacer size={3} />
+              <LoginStatus status={authStatus} />
+              <Spacer size={2} />
+
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <LogInButton
+                  action={() =>
+                    signInWithEmail(
+                      username + "@mail.com",
+                      password,
+                      setAuthStatus
+                    )
+                  }
+                >
+                  Sign in
+                </LogInButton>
+              </div>
+            </div>
+            <Spacer size={3} />
+            <p style={{ color: "#3D3D3D", textAlign: "center" }}>
+              Developed by{" "}
+              <a
+                href="https://github.com/larssonpatrik"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#5e5e5e" }}
+              >
+                Paddan 2023
+              </a>
+            </p>
+          </ScLogInWrap>
+        </ScLogInContainer>
       )}
     </div>
   );
@@ -191,6 +200,21 @@ const ScCountersWrap = styled.div`
     display: flex;
     flex: auto;
     gap: 8px;
+  }
+`;
+
+const ScLogInWrap = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+  }
+`;
+
+const ScLogInContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
   }
 `;
 
