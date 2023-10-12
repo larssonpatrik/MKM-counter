@@ -25,6 +25,7 @@ export function changeCountDB(medaCount: number, plusOnesCount: number) {
 }
 
 type Data = { total: number; MEDA: number; plusOnes: number; time: string };
+
 export function getCurrentCountDataDB(
   setCountState1: Function,
   setCountState2: Function
@@ -34,6 +35,21 @@ export function getCurrentCountDataDB(
     if (data !== null) {
       setCountState1(data.MEDA);
       setCountState2(data.plusOnes);
+    }
+  });
+}
+
+export function getGuestDataDB(
+  setCountState1: Function,
+  setCountState2: Function,
+  setTimeState: Function
+) {
+  onValue(postListRef, (snapshot: any) => {
+    const data: Data = snapshot.val();
+    if (data !== null) {
+      setCountState1(data.MEDA);
+      setCountState2(data.plusOnes);
+      setTimeState(data.time);
     }
   });
 }

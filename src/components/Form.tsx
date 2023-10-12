@@ -8,10 +8,24 @@ interface FormProps {
   label: string;
   type: string;
   stateHandler: [string, Function];
+  signIn?: Function;
 }
 
-export default function Form({ label, stateHandler, type }: FormProps) {
+export default function Form({ label, stateHandler, type, signIn }: FormProps) {
   const [input, setInput] = stateHandler;
+
+  function handleTextChange(e: any) {
+    setInput(e.target.value);
+  }
+
+  function handleEnterPress(e: any) {
+    if (signIn) {
+      if (e.key === "Enter") {
+        signIn();
+      }
+    }
+  }
+
   return (
     <ScFormContainer>
       <Heading size={2}>{label}</Heading>
@@ -20,7 +34,8 @@ export default function Form({ label, stateHandler, type }: FormProps) {
         placeholder={"Enter " + label.toLocaleLowerCase()}
         className="form"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={handleTextChange}
+        onKeyDown={handleEnterPress}
         type={type}
       />
     </ScFormContainer>
