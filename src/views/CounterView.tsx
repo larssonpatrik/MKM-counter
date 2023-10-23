@@ -49,7 +49,7 @@ export default function CounterView({
       <TotalText>{countMEDA + countPlusOnes}</TotalText>
       <Spacer size={3} />
 
-      <ScStatusMessage countMEDA={countMEDA} countPlusOnes={countPlusOnes}>
+      <ScStatusMessage $countMEDA={countMEDA} $countPlusOnes={countPlusOnes}>
         {countMEDA < countPlusOnes
           ? "Helvete, 50/50 regeln överskriden!"
           : "superhemligt meddelande"}
@@ -111,9 +111,12 @@ const ScButtonsContainer = styled.div`
   gap: 32px;
 `;
 
-const ScStatusMessage = styled.p<{ countMEDA: number; countPlusOnes: number }>`
+const ScStatusMessage = styled.p<{
+  $countMEDA: number;
+  $countPlusOnes: number;
+}>`
   color: ${(props) =>
-    props.countMEDA < props.countPlusOnes ? "#D10F0F" : "black"};
+    props.$countMEDA < props.$countPlusOnes ? "#D10F0F" : "black"};
   font-weight: 500;
   text-align: center;
 `;

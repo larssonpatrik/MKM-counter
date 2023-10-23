@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LogInButton, LogOutButton } from "../components/Buttons";
 import Form from "../components/Form";
 import LoginStatus from "../components/LoginStatus";
@@ -13,6 +13,18 @@ export default function LogInView() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [authStatus, setAuthStatus] = useState<any>();
+  const [error, setError] = useState<number | null>(null);
+
+  useEffect(() => {
+    authStatus?.code.includes("auth/invalid-email")
+      ? setError(0)
+      : authStatus?.code.includes("auth/missing-password")
+      ? setError(1)
+      : authStatus?.code.includes("auth/invalid-login-credentials)")
+      ? setError(2)
+      : setError(null);
+  }, [authStatus, error]);
+
   return (
     <>
       <ScLogInContainer>
@@ -31,6 +43,10 @@ export default function LogInView() {
               label="Username"
               stateHandler={[username, setUsername]}
               type="username"
+              signIn={() =>
+                signInWithEmail(username + "@mail.com", password, setAuthStatus)
+              }
+              errorStatus={error}
             />
             <Spacer size={2} />
             <Form
@@ -40,9 +56,10 @@ export default function LogInView() {
               signIn={() =>
                 signInWithEmail(username + "@mail.com", password, setAuthStatus)
               }
+              errorStatus={error}
             />
 
-            <Spacer size={3} />
+            <Spacer size={2} />
             <LoginStatus status={authStatus} />
             <Spacer size={2} />
 

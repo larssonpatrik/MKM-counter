@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import styled from "styled-components";
 
 interface LoginStatusProps {
@@ -12,11 +12,7 @@ export default function LoginStatus({ status }: LoginStatusProps) {
   }
   return (
     <ScStatusText>
-      {code.includes("invalid-email")
-        ? "Please enter a valid username!"
-        : code.includes("missing-password")
-        ? "Please enter a password!"
-        : code.includes("invalid-login-credentials")
+      {code.includes("invalid-login-credentials")
         ? "Invalid username/password!"
         : "Don't have an account? Too bad!"}
     </ScStatusText>

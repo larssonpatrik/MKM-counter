@@ -60,6 +60,7 @@ export function signInWithEmail(
   statusHandler: Function
 ) {
   signInWithEmailAndPassword(auth, email, password).catch((error) => {
+    console.error(error.message);
     statusHandler(error);
   });
 }

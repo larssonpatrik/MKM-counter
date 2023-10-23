@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./Form.css";
 import Spacer from "./Spacer";
 import { Heading } from "./Typography";
+import Input from "./Input";
 
 interface FormProps {
   label: string;
   type: string;
   stateHandler: [string, Function];
+  errorStatus: number | null;
   signIn?: Function;
 }
 
-export default function Form({ label, stateHandler, type, signIn }: FormProps) {
+export default function Form({
+  label,
+  stateHandler,
+  type,
+  signIn,
+  errorStatus,
+}: FormProps) {
   const [input, setInput] = stateHandler;
-
-  function handleTextChange(e: any) {
-    setInput(e.target.value);
-  }
 
   function handleEnterPress(e: any) {
     if (signIn) {
@@ -30,13 +34,12 @@ export default function Form({ label, stateHandler, type, signIn }: FormProps) {
     <ScFormContainer>
       <Heading size={2}>{label}</Heading>
       <Spacer size={0} />
-      <ScFormInput
-        placeholder={"Enter " + label.toLocaleLowerCase()}
-        className="form"
-        value={input}
-        onChange={handleTextChange}
-        onKeyDown={handleEnterPress}
+      <Input
+        label={label}
+        inputHandler={[input, setInput]}
+        keyPressHandler={handleEnterPress}
         type={type}
+        errorStatus={errorStatus}
       />
     </ScFormContainer>
   );
