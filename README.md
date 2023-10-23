@@ -1,6 +1,6 @@
 # MKM Counter
 
-![UI_Preview](https://github.com/larssonpatrik/MKM-counter/assets/37025716/172d385f-7635-4cf7-a4a6-999a3aef6944)
+![Preview_MKM](https://github.com/larssonpatrik/MKM-counter/assets/37025716/de8b6f0e-170c-402a-bd3e-923e6e46da06)
 
 This web application allow for the hard-working people at MKM to efficiently monitor how many people that are in META at a given moment. In addition to being able to keep track of Media / CS students and "Plus ones" at the same time, the visualization helps MKM to make quick decisions if they can allow more "Plus ones" to enter with regards to the 50/50 rule.
 
