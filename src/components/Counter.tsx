@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 
@@ -9,6 +9,11 @@ interface CounterProps {
 }
 
 export default function Counter({ name, count, changeCount }: CounterProps) {
+  function handleInputChange(e: any) {
+    const newValue = e.target.value.replace(/\D/g, "");
+    changeCount(newValue === "" ? 0 : parseInt(newValue));
+  }
+
   function countDown() {
     return count === 0 ? changeCount(count) : changeCount(count - 1);
   }
@@ -20,7 +25,7 @@ export default function Counter({ name, count, changeCount }: CounterProps) {
         </ScArrowCointainer>
 
         <ScCountContainer>
-          <ScCountText>{count}</ScCountText>
+          <ScCountText value={count} onChange={handleInputChange}></ScCountText>
         </ScCountContainer>
 
         <ScArrowCointainer onClick={() => countDown()}>
@@ -68,7 +73,16 @@ const ScCountContainer = styled.div`
   padding: 0 8px;
 `;
 
-const ScCountText = styled.p`
+const ScCountText = styled.input.attrs({ inputMode: "numeric" })`
+  @media screen and (max-width: 768px) {
+    max-width: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 75px;
+  }
+
+  text-align: center;
   font-size: 42px;
   font-weight: 700;
   color: white;
