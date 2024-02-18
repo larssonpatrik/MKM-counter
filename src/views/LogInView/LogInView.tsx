@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { LogInButton, LogOutButton } from "../components/Buttons";
-import Form from "../components/Form";
-import LoginStatus from "../components/LoginStatus";
-import Spacer from "../components/Spacer";
-import { Heading } from "../components/Typography";
-import { signInWithEmail } from "../firebaseModel";
-import styled from "styled-components";
-import Footer from "../components/Footer";
+import { LogInButton, LogOutButton } from "../../components/Buttons/Buttons";
+import Form from "../../components/Form/Form";
+import LoginStatus from "../../components/LoginStatus/LoginStatus";
+import Spacer from "../../components/Spacer/Spacer";
+import { Heading } from "../../components/Typography/Typography";
+import { signInWithEmail } from "../../firebaseModel";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+import { ScLogInContainer, ScLogInWrap } from "./LogInView.styled";
 
 export default function LogInView() {
   const [username, setUsername] = useState("");
@@ -97,18 +97,3 @@ export default function LogInView() {
     </>
   );
 }
-
-const ScLogInWrap = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    width: 35vw;
-  }
-`;
-
-const ScLogInContainer = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: center;
-  }
-`;

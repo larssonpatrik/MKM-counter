@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { ScText } from "./Footer.styled";
 
 export default function Footer() {
   return (
@@ -16,8 +16,3 @@ export default function Footer() {
     </ScText>
   );
 }
-
-const ScText = styled.p`
-  color: #3d3d3d;
-  text-align: center;
-`;

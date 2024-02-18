@@ -3,9 +3,9 @@ import "./App.css";
 import { getCurrentCountDataDB } from "./firebaseModel";
 import styled from "styled-components";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import LogInView from "./views/LogInView";
-import Header from "./components/Header";
-import CounterView from "./views/CounterView";
+import LogInView from "./views/LogInView/LogInView";
+import Header from "./components/Header/Header";
+import CounterView from "./views/CounterView/CounterView";
 
 function App() {
   const [user, setUser] = useState<any>();

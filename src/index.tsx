@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import GuestView from "./views/GuestView";
+import GuestView from "./views/GuestView/GuestView";
 
 const router = createBrowserRouter([
   {

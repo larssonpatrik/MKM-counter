@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { ScStatusText } from "./LoginStatus.styled";
 
 interface LoginStatusProps {
   status: any;
@@ -18,8 +18,3 @@ export default function LoginStatus({ status }: LoginStatusProps) {
     </ScStatusText>
   );
 }
-
-const ScStatusText = styled.p`
-  color: white;
-  text-align: center;
-`;

@@ -5,7 +5,7 @@ interface LogoProps {
 }
 
 export default function Logo({ size }: LogoProps) {
-  const logo = require("../assets/MKM_LOGO.png");
+  const logo = require("../../assets/MKM_LOGO.png");
   return (
     <img
       src={logo}

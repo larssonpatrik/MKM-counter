@@ -1,6 +1,6 @@
 import React from "react";
-import Spacer from "./Spacer";
-import Logo from "./Logo";
+import Spacer from "../Spacer/Spacer";
+import Logo from "../Logo/Logo";
 
 export default function Header() {
   return (

@@ -1,13 +1,17 @@
 import React from "react";
 import { signOut } from "firebase/auth";
-import BarGraph from "../components/BarGraph";
-import { ResetButton, LogOutButton } from "../components/Buttons";
-import Counter from "../components/Counter";
-import Spacer from "../components/Spacer";
-import { TotalText } from "../components/Typography";
-import { changeCountDB } from "../firebaseModel";
-import { styled } from "styled-components";
-import Footer from "../components/Footer";
+import BarGraph from "../../components/BarGraph/BarGraph";
+import { ResetButton, LogOutButton } from "../../components/Buttons/Buttons";
+import Counter from "../../components/Counter/Counter";
+import Spacer from "../../components/Spacer/Spacer";
+import { TotalText } from "../../components/Typography/Typography";
+import { changeCountDB } from "../../firebaseModel";
+import Footer from "../../components/Footer/Footer";
+import {
+  ScStatusMessage,
+  ScCountersWrap,
+  ScButtonsContainer,
+} from "./CounterView.styled";
 
 interface CounterViewProps {
   countMEDAState: [number, Function];
@@ -89,34 +93,3 @@ export default function CounterView({
     </>
   );
 }
-
-const ScCountersWrap = styled.div`
-  @media screen and (min-width: 768px) {
-    justify-content: center;
-    display: flex;
-    flex: auto;
-    gap: 100px;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: flex;
-    flex: auto;
-    gap: 8px;
-  }
-`;
-
-const ScButtonsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-`;
-
-const ScStatusMessage = styled.p<{
-  $countMEDA: number;
-  $countPlusOnes: number;
-}>`
-  color: ${(props) =>
-    props.$countMEDA < props.$countPlusOnes ? "#D10F0F" : "black"};
-  font-weight: 500;
-  text-align: center;
-`;

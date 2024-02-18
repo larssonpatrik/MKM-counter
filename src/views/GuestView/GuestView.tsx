@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import { getGuestDataDB } from "../firebaseModel";
-import { TotalText } from "../components/Typography";
-import Spacer from "../components/Spacer";
-import { styled } from "styled-components";
-import BarGraph from "../components/BarGraph";
-import Footer from "../components/Footer";
+import Header from "../../components/Header/Header";
+import { getGuestDataDB } from "../../firebaseModel";
+import { TotalText } from "../../components/Typography/Typography";
+import Spacer from "../../components/Spacer/Spacer";
+import BarGraph from "../../components/BarGraph/BarGraph";
+import Footer from "../../components/Footer/Footer";
+import {
+  ScMainContainer,
+  ScDescriptionText,
+  ScTimeText,
+} from "./GuestView.styled";
 
 export default function GuestView() {
   const [countMEDA, setCountMEDA] = useState<number>(0);
@@ -43,17 +47,3 @@ export default function GuestView() {
     </ScMainContainer>
   );
 }
-
-const ScMainContainer = styled.div`
-  padding: 0 16px;
-`;
-
-const ScDescriptionText = styled.p`
-  color: white;
-  text-align: center;
-`;
-
-const ScTimeText = styled.p`
-  color: rgb(61, 61, 61);
-  text-align: center;
-`;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Spacer from "./Spacer";
+import Spacer from "../Spacer/Spacer";
+import { ScFormInput, ScErrorText } from "./Input.styled";
 
 interface InputProps {
   label: string;
@@ -39,7 +39,6 @@ export default function Input({
     <>
       <ScFormInput
         placeholder={"Enter " + label.toLocaleLowerCase()}
-        className="form"
         value={input}
         onChange={handleTextChange}
         onKeyDown={keyPressHandler}
@@ -50,18 +49,3 @@ export default function Input({
     </>
   );
 }
-
-const ScFormInput = styled.input`
-  padding: 8px 16px;
-  background-color: #323232;
-  border-radius: 8px;
-  color: white;
-  caret-color: white;
-  border: 2px solid black;
-`;
-
-const ScErrorText = styled.p`
-  color: red;
-  font-size: 13px;
-  margin-left: 4px;
-`;
